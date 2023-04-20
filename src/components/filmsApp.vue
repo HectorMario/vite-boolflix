@@ -1,4 +1,5 @@
 <script>
+import { computed } from "@vue/reactivity";
 import {store} from "../store"
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 export default{
@@ -12,6 +13,20 @@ export default{
             name: "film"
             
         }
+    },
+    methods: {
+        changeTittle(para){
+            if(!this.film.title){
+                if(para == 'tittle'){
+                    return this.film.name
+                }
+                if(para == 'h3'){
+                    return this.film.original_name
+                }
+            } else{
+                return this.film.title
+            }
+        }
     }
 }
 </script>
@@ -21,8 +36,8 @@ export default{
         <div class="img">
             <img src="" alt="">
         </div>
-        <h2>{{ film.title }}</h2>
-        <h3>{{film.original_title}}</h3>
+        <h2>{{ changeTittle('tittle') }}</h2>
+        <h3>{{changeTittle('h3')}}</h3>
         <h5><span class="fi" :class="`fi-${film.original_language}`"></span> </h5>
         <p>{{film.vote_average}}</p>
     </div>

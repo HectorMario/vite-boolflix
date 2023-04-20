@@ -20,6 +20,9 @@ export default{
             <div class="col" v-for="film in store.filmArray" >
                 <film :film="film"/>
             </div>
+            <div class="col" v-for="film in store.tvArray" >
+                <film :film="film"/>
+            </div>
         </div>
     </div>
 </template>

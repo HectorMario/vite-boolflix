@@ -15,22 +15,33 @@ export default{
   },
   methods:{
     
-    callapi() {
-      axios.get(this.store.apiUrlMovie, {
+    callapi(api) {
+      axios.get(api, {
         params: {
             query : this.store.query
         }
       }).then(resp => {
-        this.store.filmArray = resp.data.results
-        console.log(this.store.filmArray);
+        if(this.store.filmArray == ""){
+          this.store.filmArray = resp.data.results
+        } else {
+          this.store.tvArray = resp.data.results
+        }
       })
+    },
+   
+    calls(){
+      this.store.filmArray = ""
+      this.callapi(this.store.apiUrlMovie),
+      this.callapi(this.store.apiUrlTv),
+      this.store.query = ""
     }
+
   }
 }
 </script>
 
 <template>
- <navBar @search="callapi"/>
+ <navBar @search="calls"/>
  <mainApp/>
 </template>
 
