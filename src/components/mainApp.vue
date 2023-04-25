@@ -15,8 +15,8 @@ export default{
 </script>
 
 <template>
-    <div class="container-fluid text-center">
-        <div class="row row-cols-3">
+    <div class="container-fluid text-center ms-gray">
+        <div class="row row-cols-6">
             <div class="col" v-for="film in store.filmArray" >
                 <film :film="film"/>
             </div>
@@ -28,5 +28,8 @@ export default{
 </template>
 
 <style scoped lang="scss">
-   
+    .ms-gray{
+        background-color: #141414;
+        min-height: calc(100vh - 88px);
+    }
 </style>
